@@ -12,6 +12,7 @@ import UserTypeSelection from './pages/UserTypeSelection';
 import AssetsPage from './pages/AssetsPage';
 import StartupDashboard from './pages/StartupDashboard';
 import InvestorDashboard from './pages/InvestorDashboard';
+import StudentDashboard from './pages/StudentDashboard';
 import PrivateRoute from './components/PrivateRoute';
 import AuthenticatedHomePage from './components/AuthenticatedHomePage';
 import Portfolio from './components/Portfolio';
@@ -63,17 +64,10 @@ function App() {
             <Route path="/terms" element={<TermsServices />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/access-denied" element={<AccessDenied />} />
-            <Route path="/startup-dashboard" element={
-              <PrivateRoute>
-                <StartupDashboard />
-              </PrivateRoute>
-            } />
-            <Route path="/investor-dashboard" element={
-              <PrivateRoute>
-                <InvestorDashboard />
-              </PrivateRoute>
-            } />
-            <Route path="*" element={<Navigate to="/\" replace />} />
+            <Route path="/startup-dashboard" element={<StartupDashboard />} />
+            <Route path="/investor-dashboard" element={<InvestorDashboard />} />
+            <Route path="/student-dashboard" element={<StudentDashboard />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Footer />
         </div>

@@ -44,10 +44,36 @@ const SignupLogin: React.FC = () => {
                 await signup(formData.email, formData.password, userType, {
                     name: formData.name,
                 });
-                navigate(userType === 'startup' ? '/startup-dashboard' : '/investor-dashboard');
+                // Navigate to appropriate dashboard based on user type
+                switch (userType) {
+                    case 'startup':
+                        navigate('/startup-dashboard');
+                        break;
+                    case 'investor':
+                        navigate('/investor-dashboard');
+                        break;
+                    case 'student':
+                        navigate('/student-dashboard');
+                        break;
+                    default:
+                        navigate('/');
+                }
             } else {
                 await login(formData.email, formData.password);
-                navigate(userType === 'startup' ? '/startup-dashboard' : '/investor-dashboard');
+                // Navigate to appropriate dashboard based on user type
+                switch (userType) {
+                    case 'startup':
+                        navigate('/startup-dashboard');
+                        break;
+                    case 'investor':
+                        navigate('/investor-dashboard');
+                        break;
+                    case 'student':
+                        navigate('/student-dashboard');
+                        break;
+                    default:
+                        navigate('/');
+                }
             }
         } catch (err: any) {
             setError(err.message || 'An error occurred during authentication');
@@ -62,7 +88,20 @@ const SignupLogin: React.FC = () => {
 
         try {
             await loginWithGoogle(userType);
-            navigate(userType === 'startup' ? '/startup-dashboard' : '/investor-dashboard');
+            // Navigate to appropriate dashboard based on user type
+            switch (userType) {
+                case 'startup':
+                    navigate('/startup-dashboard');
+                    break;
+                case 'investor':
+                    navigate('/investor-dashboard');
+                    break;
+                case 'student':
+                    navigate('/student-dashboard');
+                    break;
+                default:
+                    navigate('/');
+            }
         } catch (err: any) {
             setError(err.message || 'An error occurred during Google sign-in');
         } finally {
@@ -95,6 +134,32 @@ const SignupLogin: React.FC = () => {
         setError('');
     };
 
+    const getUserTypeDisplay = () => {
+        switch (userType) {
+            case 'startup':
+                return 'Startup';
+            case 'investor':
+                return 'Investor';
+            case 'student':
+                return 'Student';
+            default:
+                return 'User';
+        }
+    };
+
+    const getUserTypeColor = () => {
+        switch (userType) {
+            case 'startup':
+                return 'from-blue-400 to-purple-400';
+            case 'investor':
+                return 'from-purple-400 to-pink-400';
+            case 'student':
+                return 'from-green-400 to-blue-400';
+            default:
+                return 'from-blue-400 to-purple-400';
+        }
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 text-white flex items-center justify-center p-6">
             <motion.div
@@ -114,8 +179,8 @@ const SignupLogin: React.FC = () => {
                         {mode === 'signin'
                             ? 'Sign in to continue as a'
                             : 'Sign up to join as a'}
-                        <span className="font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 ml-2">
-                            {userType === 'startup' ? 'Startup' : 'Investor'}
+                        <span className={`font-medium text-transparent bg-clip-text bg-gradient-to-r ${getUserTypeColor()} ml-2`}>
+                            {getUserTypeDisplay()}
                         </span>
                     </p>
                 </motion.div>
@@ -304,4 +369,3 @@ const SignupLogin: React.FC = () => {
 };
 
 export default SignupLogin;
-

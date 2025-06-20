@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Building2, Users, History } from 'lucide-react';
+import { ArrowRight, Building2, Users, GraduationCap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const UserTypeSelection: React.FC = () => {
     const navigate = useNavigate();
 
-    const handleSelection = (type: 'startup' | 'investor') => {
+    const handleSelection = (type: 'startup' | 'investor' | 'student') => {
         localStorage.setItem('userType', type);
         navigate('/auth');
     };
@@ -104,22 +104,22 @@ const UserTypeSelection: React.FC = () => {
                     </motion.div>
 
                     <motion.div
-                        className="bg-dark-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 flex flex-col items-center text-center hover:border-primary-500/50 cursor-pointer transition-all duration-300 group"
+                        className="bg-dark-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 flex flex-col items-center text-center hover:border-green-500/50 cursor-pointer transition-all duration-300 group"
                         whileHover={{
                             y: -5,
-                            boxShadow: "0 10px 30px -10px rgba(12, 147, 228, 0.3)"
+                            boxShadow: "0 10px 30px -10px rgba(34, 197, 94, 0.3)"
                         }}
-                        
+                        onClick={() => handleSelection('student')}
                     >
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-r from-primary-500/20 to-primary-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <History className="w-10 h-10 text-primary-400" />
+                        <div className="w-20 h-20 rounded-full bg-gradient-to-r from-green-500/20 to-green-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <GraduationCap className="w-10 h-10 text-green-400" />
                         </div>
                         <h3 className="text-xl font-semibold mb-3">Get Certified</h3>
                         <p className="text-gray-400 mb-6">
-                            Looking to grow my business and connect with potential investors
+                            Looking to enhance skills and get industry-recognized certifications
                         </p>
                         <motion.div
-                            className="flex items-center text-primary-400 font-medium"
+                            className="flex items-center text-green-400 font-medium"
                             whileHover={{ x: 5 }}
                         >
                             <span>Continue</span>
