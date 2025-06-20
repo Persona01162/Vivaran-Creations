@@ -114,7 +114,7 @@ const UserTypeSelection: React.FC = () => {
                         <div className="w-20 h-20 rounded-full bg-gradient-to-r from-primary-500/20 to-primary-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                             <History className="w-10 h-10 text-primary-400" />
                         </div>
-                        <h3 className="text-xl font-semibold mb-3">Human Resource or Hiring or Certification</h3>
+                        <h3 className="text-xl font-semibold mb-3">Get Certified</h3>
                         <p className="text-gray-400 mb-6">
                             Looking to grow my business and connect with potential investors
                         </p>
